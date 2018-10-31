@@ -2,6 +2,7 @@
   "name": "nytreact",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "moment": "^2.22.2",
     "react": "^16.6.0",

@@ -35,11 +35,7 @@ class Scrubber extends Component {
     let endDate = this.state.endDate || 2018;
     endDate += "1231";
 
-    fetch(
-      `https://dreadful-corpse-71723.herokuapp.com/api/scrub/${
-        this.state.search
-      }/${beginDate}/${endDate}`
-    )
+    fetch(`/api/scrub/${this.state.search}/${beginDate}/${endDate}`)
       .then(res => res.json())
       .then(articles => {
         this.setState({ articles });
@@ -48,7 +44,7 @@ class Scrubber extends Component {
 
   handleSave = event => {
     event.persist();
-    fetch("https://dreadful-corpse-71723.herokuapp.com/api/saveArticle", {
+    fetch("/api/saveArticle", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -84,7 +80,7 @@ class Scrubber extends Component {
   handleRemove = event => {
     event.persist();
     fetch(
-      `https://dreadful-corpse-71723.herokuapp.com/api/deletedSavedArticle/${event.target.parentElement.getAttribute(
+      `/api/deletedSavedArticle/${event.target.parentElement.getAttribute(
         "data-id"
       )}`,
       { method: "DELETE" }
@@ -99,7 +95,7 @@ class Scrubber extends Component {
   };
 
   getSavedArticles = event => {
-    fetch("https://dreadful-corpse-71723.herokuapp.com/api/savedArticles")
+    fetch("/api/savedArticles")
       .then(res => res.json())
       .then(savedArticles => {
         this.setState({ savedArticles });

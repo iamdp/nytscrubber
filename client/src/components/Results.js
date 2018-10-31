@@ -12,7 +12,9 @@ const Results = props => {
       {props.articles.map((article, index) => (
         <div className="article" key={index} data-id={index}>
           <p>
-            <a href={article.url}>{article.title}</a>
+            <a href={article.url} target="_new">
+              {article.title}
+            </a>
           </p>
           <p>Date Published: {moment(article.date).format("MMMM Do YYYY")}</p>
           <button className="btn" onClick={props.handleSave}>
